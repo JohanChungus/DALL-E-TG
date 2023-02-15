@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "langdetect": "^0.2.1",
+    "node-telegram-bot-api": "^0.61.0",
+    "openai": "^3.1.0",
+    "request-promise-native": "^1.0.9"
+  }
+}

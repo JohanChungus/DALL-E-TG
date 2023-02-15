@@ -2,11 +2,23 @@ const TelegramBot = require("node-telegram-bot-api");
 const secrets = require("./secrets.json");
 const request = require("request-promise-native");
 
+// Проверяем наличие токенов API в файле secrets.json
+if (!secrets.telegram.accessToken) {
+  console.error("Ошибка: не указан токен Telegram Bot API");
+  process.exit(1);
+}
+
+if (!secrets.openai.apiKey) {
+  console.error("Ошибка: не указан токен OpenAI API");
+  process.exit(1);
+}
+
 // Авторизуемся с помощью ключей API
 const bot = new TelegramBot(secrets.telegram.accessToken, { polling: true });
 
 // Функция-обработчик команды /start
 bot.onText(/\/start/, (msg) => {
+  // Отправляем приветственное сообщение при старте
   bot.sendMessage(
     msg.chat.id,
     "Привет! Я бот DALL-E от OpenAI. Чтобы получить изображение, напиши мне запрос и я его обработаю."
@@ -43,15 +55,18 @@ bot.on("message", async (msg) => {
         },
         json: true,
       };
+
+      // Отправляем запрос к API DALL-E
       const response = await request(requestOptions);
 
+      // Уведомляем пользователя, что запрос обрабатывается
       bot.sendMessage(msg.chat.id, "Подождите, пока я сгенерирую изображение.");
       
       // Отправляем изображение пользователю
       const image_url = response.data[0].url;
-
       bot.sendPhoto(msg.chat.id, image_url);
     } catch (err) {
+      // Уведомляем пользователя, если запрос был отклонен из-за ошибки
       bot.sendMessage(
         msg.chat.id,
         "Ваш запрос был отклонен из-за нашей системы безопасности. Ваше приглашение может содержать текст, который не разрешен нашей системой безопасности."

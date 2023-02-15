@@ -1,14 +1,14 @@
-# This is OpenAI's DALL-E telegram bot, which can generate images based on text requests.
-## Installation and use
-1. Slant the repository with the command:
+# Телеграм-бот DALL-E от OpenAI, который может генерировать изображения на основе текстовых запросов.
+## Установка и использование
+1. Склонируйте репозиторий с помощью команды::
 ```bash
 git clone https://github.com/<your-github-username>/<your-repository-name>.git
 ```
-2. Install the necessary dependencies with the command:
+2. Установите необходимые зависимости с помощью команды::
 ```bash
 npm install
 ```
-3. Create a secrets.json file in the project root directory and fill it with your API keys:
+3. Создайте файл secrets.json в корневой директории проекта и заполните его вашими ключами API:
 ```json
 {
   "openai": {
@@ -19,11 +19,11 @@ npm install
   }
 }
 ```
-4. Run the bot with the command:
+4. Запустите бота с помощью команды:
 ```bash
 npm start
 ```
 ## How to use the bot
-1. Find the bot @<your-bot-name> on Telegram and start a dialog.
-2. Send a request describing the image you would like to create.
-3. The bot will send you a message with the image created based on your request.
+1. Найдите бота @<your-bot-name> в Telegram и начните диалог.
+2. Отправьте запрос, описывающий изображение, которое вы хотели бы создать.
+3. Бот отправит вам сообщение с изображением, созданным на основе вашего запроса.

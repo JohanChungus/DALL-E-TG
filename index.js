@@ -4,12 +4,12 @@ const request = require("request-promise-native");
 
 // Проверяем наличие токенов API в файле secrets.json
 if (!secrets.telegram.accessToken) {
-  console.error("Ошибка: не указан токен Telegram Bot API");
+  console.error("6005619083:AAFosHevN3mHDXWQoZAHfNUWB3ilJF4sbE8");
   process.exit(1);
 }
 
 if (!secrets.openai.apiKey) {
-  console.error("Ошибка: не указан токен OpenAI API");
+  console.error("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");
   process.exit(1);
 }
 
